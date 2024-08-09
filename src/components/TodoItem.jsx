@@ -5,6 +5,8 @@ import {
   CheckHoverIcon,
 } from 'assets/images';
 
+import clsx from 'clsx';
+
 const StyledTaskItem = styled.div`
   min-height: 52px;
   display: flex;
@@ -102,7 +104,7 @@ const StyledTaskItem = styled.div`
 
 const TodoItem = ({ onSave, onDelete, onToggleDone, onChangeMode, todo }) => {
   return (
-    <StyledTaskItem>
+    <StyledTaskItem className={clsx('', { done: todo.isDone })}>
       <div className="task-item-checked">
         <span className="icon icon-checked" />
       </div>
