@@ -71,7 +71,13 @@ const StyledAddTodoActionContainer = styled.div`
 const TodoInput = ({ inputValue, onChange, onKeyDone, onAddTodo }) => {
   return (
     <StyledAddTodoContainer>
-      <StyledLabelIcon className="icon" htmlFor="add-todo-input" />
+      <StyledLabelIcon
+        className="icon"
+        htmlFor="add-todo-input"
+        onClick={() => {
+          onAddTodo?.();
+        }}
+      />
       <StyledInputContainer>
         <input
           id="add-todo-input"
