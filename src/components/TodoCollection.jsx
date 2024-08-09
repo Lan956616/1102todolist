@@ -1,6 +1,12 @@
 import TodoItem from './TodoItem';
 
-const TodoCollection = () => {
+const TodoCollection = ({
+  onSave,
+  onDelete,
+  onToggleDone,
+  onChangeMode,
+  todos,
+}) => {
   return (
     <div>
       TodoCollection
