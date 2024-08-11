@@ -31,10 +31,15 @@ const StyledButton = styled.button`
   }
 `;
 
-const Footer = () => {
+const Footer = ({ todos }) => {
+  const undoTodos = todos.filter(
+    (todo) => todo.isDone === false && todo.isDelete === false,
+  );
+  const undoNumber = undoTodos.length;
+
   return (
     <StyledFooter>
-      <p>剩餘項目數： 0</p>
+      <p>剩餘項目數： {undoNumber}</p>
       <StyledButton>登出</StyledButton>
     </StyledFooter>
   );

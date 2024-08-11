@@ -7,21 +7,25 @@ const dummyTodos = [
     title: 'Learn react-router',
     isDone: true,
     id: 1,
+    isDelete: false,
   },
   {
     title: 'Learn to create custom hooks',
     isDone: false,
     id: 2,
+    isDelete: false,
   },
   {
     title: 'Learn to use context',
     isDone: true,
     id: 3,
+    isDelete: false,
   },
   {
     title: 'Learn to implement auth',
     isDone: false,
     id: 4,
+    isDelete: false,
   },
 ];
 
@@ -44,6 +48,7 @@ const TodoPage = () => {
           id: Math.random() * 100,
           title: inputValue,
           isDone: false,
+          isDelete: false,
         },
       ];
     });
@@ -62,7 +67,7 @@ const TodoPage = () => {
     );
   }
 
-  function handleChange({ id, isEdit }) {
+  function handleItemChange({ id, isEdit }) {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
@@ -84,7 +89,18 @@ const TodoPage = () => {
         }
       }),
     );
-    console.log('todos', todos);
+  }
+
+  function handleDelete(id) {
+    const newTodo = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, isDelete: true };
+      } else {
+        return todo;
+      }
+    });
+    console.log('newTodo', newTodo);
+    setTodos(newTodo);
   }
 
   return (
@@ -100,10 +116,11 @@ const TodoPage = () => {
       <TodoCollection
         todos={todos}
         onToggleDone={handleToggleDone}
-        onChangeMode={handleChange}
+        onChangeMode={handleItemChange}
         onSave={handleOnSave}
+        onDelete={handleDelete}
       />
-      <Footer />
+      <Footer todos={todos} />
     </div>
   );
 };
