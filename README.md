@@ -37,7 +37,12 @@ npm install
 npm run start
 ```
 
-5.暫停執行網頁
+5. 前往todopage
+```
+ http://localhost:3000/todo
+```
+
+6.暫停執行網頁
 
 ```
 ctrl +　ｃ
